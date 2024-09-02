@@ -1,5 +1,3 @@
-vim.cmd("set relativenumber")
-vim.g.mapleader = " "
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -17,18 +15,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("key-bindings")
 require("lazy").setup("plugins")
 
-vim.keymap.set('n', '<C-n>',':Neotree filesystem reveal left<CR>',{})
-require("catppuccin").setup()
-vim.cmd.colorscheme "catppuccin"
 
-local config = require("nvim-treesitter.configs")
-config.setup({
-	ensure_installed = {"lua","javascript","python"},
-	highlight = { enable = true },
-	indent = { enable = true },
-})
 
 
 
